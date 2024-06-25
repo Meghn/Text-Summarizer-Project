@@ -8,3 +8,8 @@ data_ingestion:
   source_URL: https://github.com/entbappy/Branching-tutorial/raw/master/summarizer-data.zip # Gets from this URL
   local_data_file: artifacts/data_ingestion/data.zip # Downloads the data in the URL as this file
   unzip_dir: artifacts/data_ingestion # When we unzip data where do we store it
+
+data_validation:
+  root_dir: artifacts/data_validation # creates data_validation in artifacts
+  STATUS_FILE: artifacts/data_validation/status.txt # If all three are there status will be true else false
+  ALL_REQUIRED_FILES: ["train", "test", "validation"] # Checks if all three are available

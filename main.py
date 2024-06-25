@@ -5,12 +5,23 @@
 
 # Step 7.7: Add the Data Ingestion to the main file
 from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+from textSummarizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
 from textSummarizer.logging import logger
 
 STAGE_NAME = "Data Ingestion"
 try:
     logger.info(f">>>>> Starting {STAGE_NAME} stage <<<<<")
     data_ingestion = DataIngestionTrainingPipeline()
+    data_ingestion.main()
+    logger.info(f">>>>> Completed {STAGE_NAME} stage <<<<<\n\nx=============x")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+STAGE_NAME = "Data Validation"
+try:
+    logger.info(f">>>>> Starting {STAGE_NAME} stage <<<<<")
+    data_ingestion = DataValidationTrainingPipeline()
     data_ingestion.main()
     logger.info(f">>>>> Completed {STAGE_NAME} stage <<<<<\n\nx=============x")
 except Exception as e:
