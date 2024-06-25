@@ -1,0 +1,10 @@
+# Step 6.1: Step 1 in the workflow. Configuration required to run some files
+# Step 7.1
+# Changes made here would be reflected in all the files this is called. So it reduces the hassle of manually going to each file and changing.
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion # creates data_ingestion in artifacts
+  source_URL: https://github.com/entbappy/Branching-tutorial/raw/master/summarizer-data.zip # Gets from this URL
+  local_data_file: artifacts/data_ingestion/data.zip # Downloads the data in the URL as this file
+  unzip_dir: artifacts/data_ingestion # When we unzip data where do we store it
