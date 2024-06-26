@@ -13,3 +13,8 @@ data_validation:
   root_dir: artifacts/data_validation # creates data_validation in artifacts
   STATUS_FILE: artifacts/data_validation/status.txt # If all three are there status will be true else false
   ALL_REQUIRED_FILES: ["train", "test", "validation"] # Checks if all three are available
+
+data_transformation:
+  root_dir: artifacts/data_transformation # creates data_transformation in artifacts
+  data_path: artifacts/data_ingestion/samsum_dataset # the dataset we wants to work on
+  tokenizer_name: google/pegasus-cnn_dailymail # Model for Tokenization
