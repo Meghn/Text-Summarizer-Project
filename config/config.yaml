@@ -18,3 +18,8 @@ data_transformation:
   root_dir: artifacts/data_transformation # creates data_transformation in artifacts
   data_path: artifacts/data_ingestion/samsum_dataset # the dataset we wants to work on
   tokenizer_name: google/pegasus-cnn_dailymail # Model for Tokenization
+
+model_trainer:
+  root_dir: artifacts/model_trainer # creates model_trainer in artifacts
+  data_path: artifacts/data_transformation/samsum_dataset
+  model_ckpt: google/pegasus-large # Pre-trained model

@@ -2,7 +2,8 @@
 # Import the entity also
 from textSummarizer.entity import (DataIngestionConfig, 
                                    DataValidationConfig,
-                                   DataTransformationConfig) # The brackets is for importing multiple entities
+                                   DataTransformationConfig,
+                                   ModelTrainerConfig) # The brackets is for importing multiple entities
 from textSummarizer.constants import *
 from textSummarizer.utils.common import read_yaml, create_directories
 
@@ -55,3 +56,26 @@ class ConfigurationManager:
             tokenizer_name = config.tokenizer_name,
         )
         return data_transformation_config
+
+    # For Model Training
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        params = self.params.TrainingArguments
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir = Path(config.root_dir),
+            data_path = Path(config.data_path),
+            model_ckpt = Path(config.model_ckpt),
+            num_train_epochs = params.num_train_epochs,
+            warmup_steps = params.warmup_steps,
+            per_device_train_batch_size = params.per_device_train_batch_size,
+            weight_decay = params.weight_decay,
+            logging_step = params.logging_step,
+            evaluation_strategy = params.evaluation_strategy,
+            eval_steps = params.eval_steps,
+            save_steps = params.save_steps,
+            gradient_accumulation_steps = params.gradient_accumulation_steps
+        )
+        return model_trainer_config

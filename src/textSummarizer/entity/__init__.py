@@ -23,3 +23,19 @@ class DataTransformationConfig:
     root_dir: Path
     data_path: str
     tokenizer_name: list
+
+# This is my entity for Model Trainer
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    data_path: Path
+    model_ckpt: Path
+    num_train_epochs: int
+    warmup_steps: int
+    per_device_train_batch_size: int
+    weight_decay: float
+    logging_step: int
+    evaluation_strategy: str
+    eval_steps: int
+    save_steps: float
+    gradient_accumulation_steps: int
