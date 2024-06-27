@@ -10,7 +10,7 @@ class ModelTrainer:
     def __init__(self, config: ModelTrainerConfig):
         self.config = config
     
-    def train(self):
+    def train(self):    
         # Disable the MPS high watermark ratio limit
         os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
         
@@ -45,8 +45,10 @@ class ModelTrainer:
             train_dataset=dataset_samsum_pt["test"],
             eval_dataset=dataset_samsum_pt["validation"])
         
-        trainer.train()
+        # trainer.train()
+        return model_pegasus, tokenizer
 
+    def save_model(self, model_pegasus, tokenizer):
         # Save the trained model
         model_pegasus.save_pretrained(os.path.join(self.config.root_dir, "pegasus-samsum-model"))
         # Save the tokenizer
